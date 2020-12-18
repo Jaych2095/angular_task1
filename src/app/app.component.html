@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Welcome to Employee App!</h1>
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-form
+      (onSubmit)="formdataenter($event)"
+      ></app-form>
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-projectmanager
+      [pmelement]="project_manager_detail"
+      ></app-projectmanager>
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-developer
+      [develement]="developer_detail"></app-developer>
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-designer
+      [deselement]="designer_detail"></app-designer>
+      <hr>
+    </div>
+  </div>
+</div>

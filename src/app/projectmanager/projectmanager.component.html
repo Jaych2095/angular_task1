@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Project-Manager Table</h3>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table">
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>ContactNo</th>
+                    <th>Salary</th>
+                    <th>Designation</th>
+                </tr>
+                <tr *ngFor="let i of pmelement" [ngStyle]="{color:getcolor(i.salary)}">
+                    <td>{{i.firstname}}</td>
+                    <td>{{i.lastname}}</td>
+                    <td>{{i.contactno}}</td>
+                    <td>{{i.salary}}</td>
+                    <td>{{i.designation}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
