@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+
+
 
 
 @Component({
@@ -8,34 +10,43 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
+ 
+  public firstname:string;
+  public lastname:string;
+  public contactno:number;
+  public salary:number;
+  public designation:string;
+  
+  
+  @Output() onSubmit=new  EventEmitter<{
+  firstname:string,
+  lastname:string,
+  contactno:number,
+  salary:number,
+  designation:string
+  }>();
+ 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
-  firstname='';
-  lastname='';
-  contactno:number;
-  salary:number;
-  designation='';
- 
-
-  @Output() onSubmit=new  EventEmitter<{
-    firstname:string,
-    lastname:string,
-    contactno:number,
-    salary:number,
-    designation:string
-  }>();
+  
+  
 
   onFormSubmit()
   {
-    if(this.contactno.toString().length!=10)
-    {
-      alert('The Number should be 10 digit');
-    }
-    else if(this.firstname.length===0 || this.lastname.length===0 || this.contactno.toString().length===0 || this.salary.toString().length===0 || this.designation.length===0)
+     
+    if(!this.firstname ||  !this.lastname ||  !this.contactno || !this.salary ||  !this.designation)
     {
       alert('Please Fill All the Details');
+    }
+    else if(this.firstname.includes(" ") || this.lastname.includes(" ") ||  this.contactno.toString().includes(" ") || this.salary.toString().includes(" "))
+    {
+      alert("Remove Blank Space from the Field");
+    }
+    else if(this.contactno.toString().length!=10)
+    {
+      alert('Mobile Number Should be 10 Digit')
     }
     else
     {

@@ -1,40 +1,25 @@
-import { rendererTypeName } from '@angular/compiler';
+
 import { Component, Input, OnInit } from '@angular/core';
-import { StringifyOptions } from 'querystring';
+
+import { changingColourService } from '../changing-colour.service';
+import { Employee } from '../shared/employee.model';
 
 @Component({
   selector: 'app-designer',
   templateUrl: './designer.component.html',
-  styleUrls: ['./designer.component.css']
+  styleUrls: ['./designer.component.css'],
+  providers:[changingColourService]
 })
 export class DesignerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private color:changingColourService) { }
 
   ngOnInit(): void {
   }
-  @Input() deselement:
-  {
-    firstname:string,
-    lastname:string,
-    salary:number,
-    contactno:number,
-    designation:string
-  }
+  @Input() deselement: Employee[];
   getcolor(salary:number)
   {
-    if(salary<=10000)
-    {
-      return 'red';
-    }
-    else if(salary>10000 && salary<20000)
-    {
-      return 'green';
-    }
-    else
-    {
-      return 'blue';
-    }
+    return this.color.setcolor(salary);
   }
 
 }

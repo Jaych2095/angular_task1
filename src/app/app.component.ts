@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Employee } from './shared/employee.model';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'EmployeeApp';
-  project_manager_detail=[];
-  developer_detail=[];
-  designer_detail=[];
+  project_manager_detail:Employee[]=[];
+  developer_detail:Employee[]=[];
+  designer_detail:Employee[]=[];
   formdataenter(data:{
     firstname:string,
     lastname:string,
@@ -20,39 +21,15 @@ export class AppComponent {
     
     if(data.designation === 'Project-Manager')
     {
-      this.project_manager_detail.push(
-        {
-          firstname:data.firstname,
-          lastname:data.lastname,
-          contactno:data.contactno,
-          salary:data.salary,
-          designation:data.designation
-        }
-      )
+      this.project_manager_detail.push(data)
     }
     else if(data.designation === 'Developer')
     {
-      this.developer_detail.push(
-        {
-          firstname:data.firstname,
-          lastname:data.lastname,
-          contactno:data.contactno,
-          salary:data.salary,
-          designation:data.designation
-        }
-      )
+      this.developer_detail.push(data)
     }
     else
     {
-      this.designer_detail.push(
-        {
-          firstname:data.firstname,
-          lastname:data.lastname,
-          contactno:data.contactno,
-          salary:data.salary,
-          designation:data.designation
-        }
-      )
+      this.designer_detail.push(data)
     }
   }
 

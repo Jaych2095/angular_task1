@@ -1,37 +1,23 @@
 import { Component, OnInit,EventEmitter,Input } from '@angular/core';
+import { changingColourService } from '../changing-colour.service';
+import { Employee } from '../shared/employee.model';
 
 
 @Component({
   selector: 'app-projectmanager',
   templateUrl: './projectmanager.component.html',
-  styleUrls: ['./projectmanager.component.css']
+  styleUrls: ['./projectmanager.component.css'],
+  providers:[changingColourService]
 })
 export class ProjectmanagerComponent implements OnInit {
-  @Input() pmelement:{
-    firstname:string,
-    lastname:string,
-    contactno:number,
-    salary:number,
-    designation:string
-  };
-  constructor() { }
+  @Input() pmelement:Employee;
+  constructor(private color:changingColourService) { }
 
   ngOnInit(): void {
   }
   getcolor(salary:number)
   {
-    if(salary<=10000)
-    {
-      return 'red';
-    }
-    else if(salary>10000 && salary<=20000)
-    {
-      return 'green';
-    }
-    else
-    {
-      return 'blue';
-    }
+    return this.color.setcolor(salary);
   }
 
 }
